@@ -1,6 +1,21 @@
-import { Schema, model, models, type InferSchemaType } from "mongoose";
+import { Schema, model, models, type Document, type Types } from "mongoose";
 
-const gameSessionSchema = new Schema(
+export interface GameSession extends Document {
+  _id: Types.ObjectId;
+  userId: Types.ObjectId;
+  status: "idle" | "playing" | "won" | "lost";
+  mapId: string;
+  playerX: number;
+  playerY: number;
+  hasKey: boolean;
+  riddlesSolved: number;
+  steps: number;
+  lastAction: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const gameSessionSchema = new Schema<GameSession>(
   {
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     status: {
@@ -19,8 +34,6 @@ const gameSessionSchema = new Schema(
   { timestamps: true }
 );
 
-export type GameSession = InferSchemaType<typeof gameSessionSchema>;
-
 export const GameSessionModel =
-  models.GameSession || model("GameSession", gameSessionSchema);
+  models.GameSession || model<GameSession>("GameSession", gameSessionSchema);
 

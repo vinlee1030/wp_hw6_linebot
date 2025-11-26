@@ -1,6 +1,19 @@
-import { Schema, model, models, type InferSchemaType } from "mongoose";
+import { Schema, model, models, type Document, type Types } from "mongoose";
 
-const messageLogSchema = new Schema(
+export interface MessageLog extends Document {
+  _id: Types.ObjectId;
+  userId: Types.ObjectId;
+  gameSessionId?: Types.ObjectId;
+  direction: "user" | "bot";
+  type: "text" | "system";
+  text?: string;
+  rawEvent?: unknown;
+  usedLLM: boolean;
+  llmLatencyMs?: number;
+  timestamp: Date;
+}
+
+const messageLogSchema = new Schema<MessageLog>(
   {
     userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     gameSessionId: { type: Schema.Types.ObjectId, ref: "GameSession" },
@@ -15,8 +28,6 @@ const messageLogSchema = new Schema(
   { minimize: false }
 );
 
-export type MessageLog = InferSchemaType<typeof messageLogSchema>;
-
 export const MessageLogModel =
-  models.MessageLog || model("MessageLog", messageLogSchema);
+  models.MessageLog || model<MessageLog>("MessageLog", messageLogSchema);
 
