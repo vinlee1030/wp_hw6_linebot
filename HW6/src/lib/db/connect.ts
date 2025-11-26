@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
+if (!uri) {
   throw new Error("Missing MONGODB_URI env variable");
 }
+
+const MONGODB_URI = uri;
 
 declare global {
   // eslint-disable-next-line no-var

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { Types } from "mongoose";
 import { connectToDatabase } from "@/lib/db/connect";
-import { MessageLogModel } from "@/lib/db/models/MessageLog";
+import { MessageLogModel, type MessageLog } from "@/lib/db/models/MessageLog";
 import { validateAdminAuth } from "@/lib/admin/auth";
 
 function unauthorized() {
@@ -23,7 +24,7 @@ export async function GET(
     gameSessionId: params.id,
   })
     .sort({ timestamp: 1 })
-    .lean();
+    .lean<(MessageLog & { _id: Types.ObjectId })[]>();
 
   return NextResponse.json(
     messages.map((message) => ({

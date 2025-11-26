@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { Types } from "mongoose";
 import { connectToDatabase } from "@/lib/db/connect";
-import { GameSessionModel } from "@/lib/db/models/GameSession";
+import { GameSessionModel, type GameSession } from "@/lib/db/models/GameSession";
 import { MessageLogModel } from "@/lib/db/models/MessageLog";
 import { validateAdminAuth } from "@/lib/admin/auth";
 
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
     .sort({ updatedAt: -1 })
     .limit(50)
     .populate("userId")
-    .lean();
+    .lean<(GameSession & { _id: Types.ObjectId; userId: any })[]>();
 
   const filtered = q
     ? sessions.filter((session) => {

@@ -22,7 +22,9 @@ import {
 const channelSecret = process.env.LINE_CHANNEL_SECRET ?? "";
 let llmDisabledUntil = 0;
 
-function buildHelpFlex() {
+import type { FlexMessage } from "@line/bot-sdk";
+
+function buildHelpFlex(): FlexMessage {
   return {
     type: "flex",
     altText: "Emoji Maze Puzzle 說明",

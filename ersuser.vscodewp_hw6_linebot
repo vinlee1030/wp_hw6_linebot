@@ -1,0 +1,35 @@
+warning: in the working copy of 'HW6/.next/app-build-manifest.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'HW6/.next/build-manifest.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'HW6/.next/server/app-paths-manifest.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'HW6/.next/trace', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'HW6/tsconfig.json', LF will be replaced by CRLF the next time Git touches it
+HW6/.gitignore
+HW6/.next/app-build-manifest.json
+HW6/.next/build-manifest.json
+HW6/.next/cache/webpack/client-production/0.pack
+HW6/.next/cache/webpack/client-production/1.pack
+HW6/.next/cache/webpack/client-production/2.pack
+HW6/.next/cache/webpack/client-production/3.pack
+HW6/.next/cache/webpack/client-production/index.pack
+HW6/.next/cache/webpack/client-production/index.pack.old
+HW6/.next/cache/webpack/server-production/0.pack
+HW6/.next/cache/webpack/server-production/index.pack
+HW6/.next/server/app-paths-manifest.json
+HW6/.next/server/app/admin/page_client-reference-manifest.js
+HW6/.next/server/app/admin/sessions/[id]/page_client-reference-manifest.js
+HW6/.next/server/middleware-build-manifest.js
+HW6/.next/server/server-reference-manifest.json
+HW6/.next/static/chunks/app/admin/layout-f4c4b0836bac512e.js
+HW6/.next/static/chunks/webpack-17abec1bd4bca978.js
+HW6/.next/static/w4gXott3Ie_95Z4eO3BLd/_buildManifest.js
+HW6/.next/static/w4gXott3Ie_95Z4eO3BLd/_ssgManifest.js
+HW6/.next/trace
+HW6/next-env.d.ts
+HW6/package-lock.json
+HW6/package.json
+HW6/src/app/admin/sessions/[id]/page.tsx
+HW6/src/app/api/admin/session/[id]/messages/route.ts
+HW6/src/app/api/admin/sessions/route.ts
+HW6/src/app/api/line/route.ts
+HW6/src/lib/db/connect.ts
+HW6/tsconfig.json

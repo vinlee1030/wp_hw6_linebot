@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
+import { Types } from "mongoose";
 import { connectToDatabase } from "@/lib/db/connect";
 import { GameSessionModel } from "@/lib/db/models/GameSession";
-import { MessageLogModel } from "@/lib/db/models/MessageLog";
+import { MessageLogModel, type MessageLog } from "@/lib/db/models/MessageLog";
 import { renderMap } from "@/lib/game/engine";
 
 interface SessionPageProps {
@@ -19,7 +20,7 @@ export default async function SessionPage({ params }: SessionPageProps) {
     gameSessionId: session._id,
   })
     .sort({ timestamp: 1 })
-    .lean();
+    .lean<(MessageLog & { _id: Types.ObjectId })[]>();
 
   return (
     <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
